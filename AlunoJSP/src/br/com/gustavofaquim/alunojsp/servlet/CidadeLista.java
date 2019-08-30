@@ -25,7 +25,7 @@ public class CidadeLista extends HttpServlet {
 		List<Cidade> lista = cidadeDAO.listar();
 		
 		req.setAttribute("lista", lista);
-		RequestDispatcher rd = req.getRequestDispatcher("/listarCidades.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("lista/cidade.jsp");
 		rd.forward(req, resp);
 	}
 }

@@ -35,17 +35,17 @@ public class CidadeDAO {
 			stmt = conexao.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 		
-			ArrayList<Cidade> cidades = new ArrayList<Cidade>();
+			ArrayList<Cidade> lista = new ArrayList<Cidade>();
 				
 			while(rs.next()) {
 				Cidade cidadeResul = new Cidade();
 				cidadeResul.setId(rs.getInt("id"));
 				cidadeResul.setNome(rs.getString("nome"));
 				cidadeResul.setEstado(rs.getString("estado"));
-				cidades.add(cidadeResul);
+				lista.add(cidadeResul);
 			}
 			stmt.close();
-			return cidades;
+			return lista;
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}
