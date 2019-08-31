@@ -8,8 +8,9 @@
 </head>
 <body>
 	<h3>Bem vindo</h3>
-	<a href="cadastro/cidade.jsp"> Cadastrar Cidade</a><br><br><br>
-	<a href="lista/cidade.jsp"> Listar Cidde</a><br><br><br>
-	<a href="cadastro/aluno.jsp"> Cadastrar Aluno</a><br>
+	<a href="cadastro/cidade.jsp">Cadastrar Cidade</a><br><br><br>
+	<a href="cadastro/aluno.jsp">Cadastrar Aluno</a><br><br><br>
+	<a href="cidadeLista">Listar Cidades</a><br><br><br>
+	<a href="alunoLista">Listar Alunos</a>
 </body>
 </html>

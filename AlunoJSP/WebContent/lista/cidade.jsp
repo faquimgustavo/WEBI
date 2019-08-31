@@ -21,7 +21,7 @@
 		List<Cidade> cidades = (List<Cidade>) request.getAttribute("lista");
 		for(Cidade c : cidades){
 			out.println("<tr>");
-			out.println("td" + c.getId() + "</td>");
+			out.println("<td>" + c.getId() + "</td>");
 			out.println("<td>" + c.getNome() + "</td>");
 			out.println("<td>" + c.getEstado() + "</td>");
 		}

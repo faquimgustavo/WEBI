@@ -50,4 +50,25 @@ public class CidadeDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+
+	public Cidade pesquisaID(int id) {
+		String sql ="select * from cidade where id= ? ";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			Cidade cidade = new Cidade();
+			
+			if(rs.next()) {
+				cidade = new Cidade();
+				cidade.setId(rs.getInt("id"));
+				cidade.setNome(rs.getString("nome"));
+				cidade.setEstado(rs.getString("estado"));
+			}
+			return cidade;
+		}catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
