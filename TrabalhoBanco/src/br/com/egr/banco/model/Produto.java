@@ -1,4 +1,4 @@
-package lista03;
+package br.com.egr.banco.model;
 
 public interface Produto {
 	public double valorImposto();

@@ -1,4 +1,4 @@
-package lista03;
+package br.com.egr.banco.model;
 
 public class PessoaJuridica extends Cliente {
 	private String cnpj;

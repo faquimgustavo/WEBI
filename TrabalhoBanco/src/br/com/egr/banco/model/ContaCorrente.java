@@ -1,5 +1,4 @@
-package lista03;
-
+package br.com.egr.banco.model;
 public class ContaCorrente extends Conta {
 
 	ContaCorrente(int numero) {

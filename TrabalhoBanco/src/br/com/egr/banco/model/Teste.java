@@ -1,4 +1,4 @@
-package lista03;
+package br.com.egr.banco.model;
 
 import java.util.ArrayList;
 import java.util.List;

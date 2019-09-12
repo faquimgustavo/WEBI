@@ -1,4 +1,6 @@
-package lista03;
+package br.com.egr.banco.model;
+
+import javax.swing.text.StyledEditorKit.BoldAction;
 
 public abstract class Conta implements Produto {
 	private int numero;
@@ -6,7 +8,7 @@ public abstract class Conta implements Produto {
 	private boolean situacao;
 
 	Conta(int numero) {
-		this.numero = numero;
+		this.setNumero(numero);
 		this.saldo = 0;
 		this.situacao = true;
 	}
@@ -43,5 +45,17 @@ public abstract class Conta implements Produto {
 
 	public double getSaldo() {
 		return saldo;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	
+	public Boolean getSituacao() {
+		return situacao;
 	}
 }
