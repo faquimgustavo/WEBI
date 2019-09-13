@@ -6,7 +6,7 @@ public class Seguro implements Produto {
 	private boolean situacao;
 
 	Seguro(int numero, double valor) {
-		this.numero = numero;
+		this.setNumero(numero);
 		this.valor = valor;
 		this.situacao = true;
 	}
@@ -23,5 +23,13 @@ public class Seguro implements Produto {
 	@Override
 	public String getTipo() {
 		return "seguro";
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 }

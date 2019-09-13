@@ -26,6 +26,10 @@ public class ClienteDAO {
 			stmt.setString(3, cliente.getTelefone());
 			stmt.execute();
 			stmt.close();
+			
+			ClienteSeguroDAO csDAO = new ClienteSeguroDAO();
+			csDAO.inserir(cliente, seguro); // Aqui também eu travei
+			
 		}catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -40,14 +44,16 @@ public class ClienteDAO {
 			Cliente c = new Cliente();
 			
 			if(rs.next()) {
-				/*c = new Cliente(rs.getInt("idcliente"), rs.getString("nome"), rs.getString("endereco"), rs.getString("telefone")); */
 				c.setIdcliente(rs.getInt("idcliente"));
 				c.setNome(rs.getString("nome"));
 				c.setEndereco(rs.getString("endereco"));
 				c.setTelefone(rs.getString("telefone"));
 				
-				for() {}
+				ClienteSeguroDAO csDAO = new ClienteSeguroDAO();
 				
+				if(csDAO.pesquisarID(c.setIdcliente(idcliente))) { //Tô aqui ô!!!!!
+					
+				}
 			}
 		}catch (Exception e) {
 			throw new RuntimeException(e);
