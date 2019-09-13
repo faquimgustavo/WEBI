@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Cliente {
+	private int idcliente;
 	private String nome;
 	private String endereco;
 	private String telefone;
 	private List<Produto> produtos;
+	
+	
+	public Cliente(){
+		
+	}
 	
 	Cliente(String nome, String endereco, String telefone) {
 		this.setNome(nome);
@@ -56,6 +62,16 @@ public abstract class Cliente {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+
+	public int getIdcliente() {
+		return idcliente;
+	}
+
+
+	public void setIdcliente(int idcliente) {
+		this.idcliente = idcliente;
 	}
 
 	

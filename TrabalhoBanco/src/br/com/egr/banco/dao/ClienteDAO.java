@@ -30,4 +30,28 @@ public class ClienteDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public Cliente pesquisarID(Cliente cliente) {
+		String sql="select * from cliente where nome = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, cliente.getNome());
+			ResultSet rs = stmt.executeQuery();
+			Cliente c = new Cliente();
+			
+			if(rs.next()) {
+				/*c = new Cliente(rs.getInt("idcliente"), rs.getString("nome"), rs.getString("endereco"), rs.getString("telefone")); */
+				c.setIdcliente(rs.getInt("idcliente"));
+				c.setNome(rs.getString("nome"));
+				c.setEndereco(rs.getString("endereco"));
+				c.setTelefone(rs.getString("telefone"));
+				
+				for() {}
+				
+			}
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+	}
 }
