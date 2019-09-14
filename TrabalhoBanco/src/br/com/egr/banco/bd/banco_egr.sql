@@ -1,5 +1,5 @@
-#create database banco_egr;
-#use banco_egr;
+create database banco_egr;
+use banco_egr;
 
 create table cliente(
 idcliente int not null auto_increment,
@@ -11,6 +11,8 @@ primary key(idcliente)
 create table pessoaFisica(
 cpf varchar(20) not null,
 idcliente int not null,
+nomeMae varchar(100) not null,
+nomePai varchar(100) not null,
 primary key(cpf),
 foreign key (idcliente) references cliente (idcliente)
 );
@@ -18,6 +20,7 @@ foreign key (idcliente) references cliente (idcliente)
 create table pessoaJuridica(
 cnpj varchar(40) not null,
 idcliente int not null,
+nomeFantasia varchar(150),
 primary key(cnpj),
 foreign key (idcliente) references cliente (idcliente)
 );
