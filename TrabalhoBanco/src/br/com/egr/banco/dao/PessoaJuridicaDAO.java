@@ -19,7 +19,14 @@ public class PessoaJuridicaDAO {
 		int id = new ClienteDAO().inserir(pj);
 		pj.setIdcliente(id);
 		
-		String sql = "inser insert pessoaJuridica (cnpj,idcliente,nomeFantasia) values ()";
-		
+		String sql = "insert pessoaJuridica (cnpj,idcliente,nomeFantasia) values (?,?,?)";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1,pj.getCnpj());
+			stmt.setInt(2, pj.getIdcliente());
+			stmt.setString(3, pj.getNomeFantasia());
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
