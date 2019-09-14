@@ -12,6 +12,13 @@ public class PessoaFisica extends Cliente {
 		super(nome, endereco, telefone);
 		this.cpf = cpf;
 	}
+	
+	public PessoaFisica(String nome, String endereco, String telefone, String cpf, String nomeMae, String nomePai) {
+		super(nome, endereco, telefone);
+		this.cpf = cpf;
+		this.nomeMae = nomeMae;
+		this.nomePai = nomePai;
+	}
 	public String getCpf() {
 		return this.cpf;
 	}

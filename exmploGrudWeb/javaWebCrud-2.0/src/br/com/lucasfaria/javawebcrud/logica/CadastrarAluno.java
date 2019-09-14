@@ -24,7 +24,7 @@ public class CadastrarAluno implements Logica {
 
 		Aluno aluno = new Aluno(nome, idade, cidade);
 		new AlunoDao().inserir(aluno);
-
+		
 		return "sucessoAluno.jsp";
 	}
 }

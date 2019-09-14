@@ -17,9 +17,6 @@ public class PessoaFisicaDAO {
 	
 	public void inserir(PessoaFisica pf) {
 		
-		int id = new ClienteDAO().inserir(pf);
-		pf.setIdcliente(id);
-		
 		String sql = "insert into pessoaFisica (cpf, idcliente, nomeMae, nomePai) values (?,?,?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);

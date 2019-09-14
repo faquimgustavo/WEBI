@@ -7,13 +7,13 @@
 <title>Cadastro Pessoa</title>
 </head>
 <body>
-	<form action="control?x=CadastrarCliente&tipo=PessoaFisica" method="post">
-		Nome: <br><input type="text"><br><br>
-		Telefone: <br><input type="text"><br><br><br>
-		Endereco: <br><input type="text"><br><br>
-		CPF: <br><input type="text"><br><br>
-		Nome Mãe: <br><input type="text"><br><br>
-		Nome Pai: <br><input type="text"><br><br>
+	<form action="control?x=CadastroCliente&tipo=PessoaFisica" method="post">
+		Nome: <br><input type="text" name="nome"><br><br>
+		Telefone: <br><input type="text" name="telefone"><br><br><br>
+		Endereco: <br><input type="text" name="endereco"><br><br>
+		CPF: <br><input type="text" name="cpf"><br><br>
+		Nome Mãe: <br><input type="text" name="nomeMae"><br><br>
+		Nome Pai: <br><input type="text" name="nomePai"><br><br>
 		
 		<input type="submit" value="Salvar">
 	</form>
