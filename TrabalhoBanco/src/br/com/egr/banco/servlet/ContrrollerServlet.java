@@ -2,14 +2,18 @@ package br.com.egr.banco.servlet;
 
 import java.io.IOException;
 
-
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import br.com.egr.banco.control.Servidor;
 
 
 
 
-//@WebServlet("/control")
+@WebServlet("/control")
 public class ContrrollerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -25,7 +29,7 @@ public class ContrrollerServlet extends HttpServlet {
 			
 			String pagina = servidor.executa(req, resp);
 			
-			req.getResquestDispatcher(pagina).forward(req,resp);
+			req.getRequestDispatcher(pagina).forward(req, resp);
 			
 			
 		} catch (Exception e) {
