@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.egr.banco.dao.ClienteDAO;
 import br.com.egr.banco.dao.PessoaFisicaDAO;
+import br.com.egr.banco.dao.PessoaJuridicaDAO;
 import br.com.egr.banco.model.PessoaFisica;
 import br.com.egr.banco.model.PessoaJuridica;
 
@@ -21,6 +22,7 @@ public class CadastroCliente implements Servidor {
 		String tipo = req.getParameter("tipo");
 		System.out.println(tipo);
 		
+		ClienteDAO clienteDAO = new ClienteDAO();
 		
 		if(tipo.equals("PessoaFisica")) {
 			String cpf = req.getParameter("cpf");
@@ -30,24 +32,28 @@ public class CadastroCliente implements Servidor {
 			PessoaFisica pf = new PessoaFisica(nome,telefone,endereco,cpf,nomeMae,nomePai);
 			// inserir o produto dentro do cliente
 			
-			//int id = new ClienteDAO().inserir(pf);
+			//int id = new ClienteDAO().inserir(pf) -  não funcionou;
 			
-			ClienteDAO clienteDAO = new ClienteDAO();
+			
 			int id = clienteDAO.inserir(pf);
 			
 			pf.setIdcliente(id);
 			
-			new PessoaFisicaDAO().inserir(pf);
-			System.out.println(id);
-			
+			new PessoaFisicaDAO().inserir(pf);	
 		}
-		else if(tipo == "PessoaJuridica") {
+		else if(tipo.equals("PessoaJuridica")) {
 			String nomeFantasia = req.getParameter("nomeFantasia");
 			String cnpj = req.getParameter("cnpj");
-		
+			
 			PessoaJuridica pj =  new PessoaJuridica(nome, telefone, endereco, cnpj, nomeFantasia);
 			// inserir o produto dentro do cliente
-			new ClienteDAO().inserir(pj);
+			
+			
+			int id = clienteDAO.inserir(pj);
+			pj.setIdcliente(id);
+			
+			new PessoaJuridicaDAO().inserir(pj);
+			 
 		}
 		
 		

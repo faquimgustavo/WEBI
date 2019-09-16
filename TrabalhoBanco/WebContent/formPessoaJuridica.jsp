@@ -7,7 +7,7 @@
 <title>Cadastro Juridico</title>
 </head>
 <body>
-	<form action="control?x=CadastrarCliente&tipo=PessoaJuridica" method="post">
+	<form action="control?x=CadastroCliente&tipo=PessoaJuridica" method="post">
 		Nome: <br><input type="text" name="nome"><br><br>
 		Telefone: <br><input type="text" name="telefone"><br><br><br>
 		Endereco: <br><input type="text" name="endereco"><br><br>
