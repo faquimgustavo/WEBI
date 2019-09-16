@@ -30,7 +30,7 @@ create table conta(
 numero bigint not null,
 saldo double not null,
 situacao boolean not null,
-tipo int not null,
+tipo varchar(50) not null,
 primary key(numero)
 );
 

@@ -8,10 +8,7 @@ public class PessoaFisica extends Cliente {
 	public  PessoaFisica() {
 		
 	}
-	public PessoaFisica(String nome, String endereco, String telefone, String cpf) {
-		super(nome, endereco, telefone);
-		this.cpf = cpf;
-	}
+
 	
 	public PessoaFisica(String nome, String endereco, String telefone, String cpf, String nomeMae, String nomePai) {
 		super(nome, endereco, telefone);
@@ -19,6 +16,15 @@ public class PessoaFisica extends Cliente {
 		this.nomeMae = nomeMae;
 		this.nomePai = nomePai;
 	}
+	
+	public PessoaFisica(int idcliente,String nome, String endereco, String telefone, String cpf, String nomeMae, String nomePai) {
+		super(idcliente, nome, endereco, telefone);
+		this.cpf = cpf;
+		this.nomeMae = nomeMae;
+		this.nomePai = nomePai;
+	}
+	
+	
 	public String getCpf() {
 		return this.cpf;
 	}

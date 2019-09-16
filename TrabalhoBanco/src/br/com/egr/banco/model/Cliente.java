@@ -22,6 +22,14 @@ public abstract class Cliente {
 		this.produtos = new ArrayList<Produto>();
 	}
 	
+	Cliente(int idcliente, String nome, String endereco, String telefone) {
+		this.setNome(nome);
+		this.setEndereco(endereco);
+		this.setTelefone(telefone);
+		this.produtos = new ArrayList<Produto>();
+	}
+
+	
 
 	public void addCCorrente(int numero) {
 		ContaCorrente cc = new ContaCorrente(numero);
