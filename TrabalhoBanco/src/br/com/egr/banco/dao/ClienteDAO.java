@@ -28,9 +28,9 @@ public class ClienteDAO {
 			
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
-			
+			int id = rs.getInt(1);
 			stmt.close();
-			return rs.getInt(1);
+			return id;
 			
 		}catch (Exception e) {
 			throw new RuntimeException(e);

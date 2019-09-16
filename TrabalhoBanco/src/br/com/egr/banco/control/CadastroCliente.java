@@ -30,12 +30,16 @@ public class CadastroCliente implements Servidor {
 			PessoaFisica pf = new PessoaFisica(nome,telefone,endereco,cpf,nomeMae,nomePai);
 			// inserir o produto dentro do cliente
 			
-			int id = new ClienteDAO().inserir(pf);
+			//int id = new ClienteDAO().inserir(pf);
+			
+			ClienteDAO clienteDAO = new ClienteDAO();
+			int id = clienteDAO.inserir(pf);
+			
 			pf.setIdcliente(id);
 			
 			new PessoaFisicaDAO().inserir(pf);
 			System.out.println(id);
-			// Tô aqui arrumando o BD
+			
 		}
 		else if(tipo == "PessoaJuridica") {
 			String nomeFantasia = req.getParameter("nomeFantasia");
