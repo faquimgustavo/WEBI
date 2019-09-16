@@ -2,6 +2,8 @@ package br.com.egr.banco.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import br.com.egr.banco.conexao.Conexao;
 import br.com.egr.banco.model.PessoaFisica;
@@ -26,6 +28,25 @@ public class PessoaFisicaDAO {
 			stmt.setString(4, pf.getNomePai());
 			stmt.execute();
 			stmt.close();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public ArrayList<PessoaFisica> listarPF() {
+		String sql = "select * from cliente inner join pessoaFisica on \n" + 
+				"cliente.idcliente = pessoaFisica.idcliente";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			ArrayList<PessoaFisica> listapf = new ArrayList<PessoaFisica>();
+			while(rs.next()) {
+				PessoaFisica pf = new PessoaFisica(rs.getInt("idcliente"), rs.getString("nome"), rs.getString("endereco"), rs.getString("telefone"), rs.getString("cpf"), rs.getString("nomePai"), rs.getString("nomeMae"));
+				listapf.add(pf);
+			}
+			stmt.close();
+			return listapf;
+			
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
