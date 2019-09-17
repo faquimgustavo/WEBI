@@ -57,7 +57,6 @@ public class CadastroCliente implements Servidor {
 		}
 		
 		
-		
 		return "index.jsp";
 	}
 

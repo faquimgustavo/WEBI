@@ -25,14 +25,14 @@ public class ControllerServlet extends HttpServlet {
 		
 		try {
 			Class<?> classe = Class.forName(nomeClasse);
-			System.out.println("\n \n Nome da Classe: " + classe.getName() + "\n \n");
+			//System.out.println("\n \n Nome da Classe: " + classe.getName() + "\n \n");
 			
 			Servidor servidor  = (Servidor) classe.getDeclaredConstructor().newInstance();
-			System.out.println("\n \n Servidor: " + servidor.toString()  + "\n \n");
+			//System.out.println("\n \n Servidor: " + servidor.toString()  + "\n \n");
 			
 			String pagina = servidor.executa(req, resp);
 			
-			System.out.println("\n \n Pagina: " + pagina + "\n \n");
+			//System.out.println("\n \n Pagina: " + pagina + "\n \n");
 			
 			req.getRequestDispatcher(pagina).forward(req, resp);
 			

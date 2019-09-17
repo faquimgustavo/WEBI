@@ -25,4 +25,17 @@ public class ClienteProdutoDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public void inserirSeguro(int idcliente, int numero) {
+		String sql = "insert into cliente_seguro(idcliente,numero) values (?,?)";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idcliente);
+			stmt.setInt(2, numero);
+			stmt.execute();
+			stmt.close();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

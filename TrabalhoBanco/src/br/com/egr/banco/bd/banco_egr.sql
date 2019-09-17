@@ -54,8 +54,8 @@ foreign key(numero) references conta (numero)
 create table cliente_seguro(
 idcliente_seguro int not null auto_increment,
 idcliente int not null,
-numero bigint not null,
+numero int not null,
 primary key(idcliente_seguro),
 foreign key(idcliente) references cliente (idcliente),
-foreign key(numero) references conta (numero)
+foreign key(numero) references seguro (numero)
 );

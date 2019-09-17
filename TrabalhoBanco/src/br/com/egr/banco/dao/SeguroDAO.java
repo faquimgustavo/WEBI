@@ -17,15 +17,17 @@ public class SeguroDAO {
 	}
 	
 	public void inserir(Seguro seguro) {
+		System.out.println("Entrou aqui!!!!! \n \n \n \n");
+		System.out.println("\n \n " + seguro.getNumero() + "\n \n ");
+		System.out.println("\n \n " + seguro.getValor() + "\n \n ");
 		String sql = "insert into seguro(numero,valor,situacao) values (?,?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setLong(1, seguro.getNumero());
+			stmt.setInt(1, seguro.getNumero());
 			stmt.setDouble(2, seguro.getValor());
 			stmt.setBoolean(3, seguro.getSituacao());
 			stmt.execute();
 			stmt.close();
-			
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
