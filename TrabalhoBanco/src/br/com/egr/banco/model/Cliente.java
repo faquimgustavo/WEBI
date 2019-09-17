@@ -23,6 +23,7 @@ public abstract class Cliente {
 	}
 	
 	Cliente(int idcliente, String nome, String endereco, String telefone) {
+		this.setIdcliente(idcliente);
 		this.setNome(nome);
 		this.setEndereco(endereco);
 		this.setTelefone(telefone);

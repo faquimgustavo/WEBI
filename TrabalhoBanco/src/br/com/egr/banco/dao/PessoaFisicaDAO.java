@@ -34,8 +34,7 @@ public class PessoaFisicaDAO {
 	}
 	
 	public ArrayList<PessoaFisica> listarPF() {
-		String sql = "select * from cliente inner join pessoaFisica on \n" + 
-				"cliente.idcliente = pessoaFisica.idcliente";
+		String sql = "select c.nome, c.endereco, c.telefone, pf.cpf, pf.idcliente,pf.nomeMae, pf.nomePai from cliente c inner join pessoaFisica pf on c.idcliente = pf.idcliente";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();

@@ -21,13 +21,18 @@ public class ControllerServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String parametro = req.getParameter("x");
 		String nomeClasse = "br.com.egr.banco.control." + parametro;
+		System.out.println("\n \n " + nomeClasse + "\n \n");
 		
 		try {
 			Class<?> classe = Class.forName(nomeClasse);
+			System.out.println("\n \n Nome da Classe: " + classe.getName() + "\n \n");
 			
 			Servidor servidor  = (Servidor) classe.getDeclaredConstructor().newInstance();
+			System.out.println("\n \n Servidor: " + servidor.toString()  + "\n \n");
 			
 			String pagina = servidor.executa(req, resp);
+			
+			System.out.println("\n \n Pagina: " + pagina + "\n \n");
 			
 			req.getRequestDispatcher(pagina).forward(req, resp);
 			

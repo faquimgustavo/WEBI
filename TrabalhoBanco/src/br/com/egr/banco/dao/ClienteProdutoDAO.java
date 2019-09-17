@@ -4,28 +4,24 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import br.com.egr.banco.conexao.Conexao;
-import br.com.egr.banco.model.Conta;
 
-
-public class ContaDAO {
+public class ClienteProdutoDAO {
 	private Connection conexao;
 	private PreparedStatement stmt;
 	
-	public ContaDAO() {
+	public ClienteProdutoDAO() {
 		this.conexao = new Conexao().getConexao();
 	}
 	
-	public void inserir(int numero, String tipo) {
-		String sql = "insert into conta (numero, saldo,situacao,tipo) values (?,?,?,?)";
+	public void inserirConta(int idcliente, int numero) {
+		String sql = "insert into cliente_conta(idcliente, numero) values (?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1,numero);
-			stmt.setDouble(2, 0.0);
-			stmt.setBoolean(3, true);
-			stmt.setString(4,tipo);
+			stmt.setInt(1, idcliente);
+			stmt.setInt(2, numero);
 			stmt.execute();
 			stmt.close();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}

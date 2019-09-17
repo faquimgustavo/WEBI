@@ -1,7 +1,7 @@
 package br.com.egr.banco.model;
 public class ContaCorrente extends Conta {
-
-	ContaCorrente(int numero) {
+	
+	public ContaCorrente(int numero) {
 		super(numero);
 		// TODO Auto-generated constructor stub
 	}

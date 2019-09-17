@@ -13,6 +13,7 @@ public abstract class Conta implements Produto {
 		this.situacao = true;
 	}
 
+
 	public boolean sacar(double valor) {
 		if (valor <= this.getSaldo()) {
 			this.saldo -= valor;

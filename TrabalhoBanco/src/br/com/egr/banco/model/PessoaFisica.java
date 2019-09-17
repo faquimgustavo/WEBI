@@ -17,7 +17,7 @@ public class PessoaFisica extends Cliente {
 		this.nomePai = nomePai;
 	}
 	
-	public PessoaFisica(int idcliente,String nome, String endereco, String telefone, String cpf, String nomeMae, String nomePai) {
+	public PessoaFisica(int idcliente, String nome, String endereco, String telefone, String cpf, String nomeMae, String nomePai) {
 		super(idcliente, nome, endereco, telefone);
 		this.cpf = cpf;
 		this.nomeMae = nomeMae;

@@ -22,20 +22,20 @@
 			 
 			out.println("<optgroup label='Clientes Físicos'>");
 			for(PessoaFisica pf : listapf){
-				out.println("<option value'" +  pf.getIdcliente() + "'> Nome: " + pf.getNome() + " - CPF: " + pf.getCpf() + "<br> </option>");
+				out.println("<option value='" +  pf.getIdcliente() + "'> Nome: " + pf.getNome() + " - CPF: " + pf.getCpf() + "<br> </option>");
 			}
 			out.println("<optgroup label='Clientes Jurídicos'>");
 			List<PessoaJuridica> listapj = new PessoaJuridicaDAO().listarPJ();
 			out.println("Clientes Juridicos");
 			for(PessoaJuridica pj : listapj){
-				out.println("<option value'" +  pj.getIdcliente() + "'> Nome: " + pj.getNome() + " - CNPJ: " + pj.getCnpj() + "<br> </option>");
+				out.println("<option value='" +  pj.getIdcliente() + "'> Nome: " + pj.getNome() + " - CNPJ: " + pj.getCnpj() + "<br> </option>");
 			}
 			%>
 			
 		</select><br><br>
 		<h4>Adicionar produto</h4>
 		<input type="radio" name="produto" value="contaCorrente"> Conta Corrente<br>
-  		<input type="radio" name="produto" value="contaPopuanca"> Conta Poupança<br>
+  		<input type="radio" name="produto" value="contaPoupanca"> Conta Poupança<br>
   		<input type="radio" name="produto" value="Seguro"> Seguro<br>  
 		
 		<br><br>
