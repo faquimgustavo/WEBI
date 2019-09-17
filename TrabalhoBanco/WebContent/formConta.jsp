@@ -34,9 +34,9 @@
 			
 		</select><br><br>
 		<h4>Adicionar produto</h4>
-		<input type="radio" name="produto" value="contaCorrente"> Conta Corrente <br> Valor Inicial R$ <input type="number" name="valorCorrente"><br><br><br>
-  		<input type="radio" name="produto" value="contaPoupanca"> Conta Poupança <br> Valor Inicial R$ <input type="number" name="valorPoupanca"><br><br><br>
-  		<input type="radio" name="produto" value="Seguro"> Seguro <br> Valor do Seguro R$ <input type="number" name="valorSeguro"><br><br>  
+		<input type="radio" name="produto" value="contaCorrente"> Conta Corrente <br> Valor Inicial R$ <input type="number" name="valorCorrente" value="0.0"><br><br><br>
+  		<input type="radio" name="produto" value="contaPoupanca"> Conta Poupança <br> Valor Inicial R$ <input type="number" name="valorPoupanca" value="0.0"><br><br><br>
+  		<input type="radio" name="produto" value="Seguro"> Seguro <br> Valor do Seguro R$ <input type="number" name="valorSeguro" value="5000"><br><br>  
 		
 		<br><br>
 		
