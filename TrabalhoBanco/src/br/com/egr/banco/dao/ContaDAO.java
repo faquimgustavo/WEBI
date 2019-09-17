@@ -15,13 +15,13 @@ public class ContaDAO {
 		this.conexao = new Conexao().getConexao();
 	}
 	
-	public void inserir(int numero, String tipo) {
+	public void inserir(Conta conta, String tipo) {
 		String sql = "insert into conta (numero, saldo,situacao,tipo) values (?,?,?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1,numero);
-			stmt.setDouble(2, 0.0);
-			stmt.setBoolean(3, true);
+			stmt.setInt(1,conta.getNumero() );
+			stmt.setDouble(2, conta.getSaldo());
+			stmt.setBoolean(3, conta.getSituacao());
 			stmt.setString(4,tipo);
 			stmt.execute();
 			stmt.close();

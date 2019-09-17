@@ -2,7 +2,7 @@ package br.com.egr.banco.model;
 
 public class ContaPoupanca extends Conta {
 
-	ContaPoupanca(int numero) {
+	public ContaPoupanca(int numero) {
 		super(numero);
 	}
 

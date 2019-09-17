@@ -11,7 +11,9 @@ import java.util.Random;
 import br.com.egr.banco.dao.ClienteProdutoDAO;
 import br.com.egr.banco.dao.ContaDAO;
 import br.com.egr.banco.dao.SeguroDAO;
+import br.com.egr.banco.model.Conta;
 import br.com.egr.banco.model.ContaCorrente;
+import br.com.egr.banco.model.ContaPoupanca;
 import br.com.egr.banco.model.Seguro;
 
 public class CadastroProduto implements Servidor {
@@ -20,28 +22,55 @@ public class CadastroProduto implements Servidor {
 	public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int idcliente = Integer.parseInt(req.getParameter("idcliente"));
 		String produto = req.getParameter("produto");
-		
-		if(produto.equals("contaCorrente") || produto.equals("contaPoupanca")) {
+		System.out.println(" \n \n \n Aqui jfjdjdfhdjfhdjfhdjfhdjfdjfdhjh");
+		if(produto.equals("contaCorrente")) {
+			Double valorConta = Double.parseDouble(req.getParameter("valorCorrente"));
 			
 			// Gera um numero aleatorio que será usado para a conta.
 			Random random = new Random();
 			int numero = random.nextInt(1000);
 			
-			//ContaCorrente cc = new ContaCorrente(numero);
 			
+			ContaCorrente cc = new ContaCorrente(numero);
+			cc.depositar(valorConta);
+			cc.ativar();
+			
+			
+			String tipo = "Conta Corrente";
 			ContaDAO contaDAO = new ContaDAO(); 
-			contaDAO.inserir(numero, produto);
+			contaDAO.inserir(cc, tipo);
 			
 			ClienteProdutoDAO cpDAO = new ClienteProdutoDAO();
-			//System.out.println(numero);
-			cpDAO.inserirConta(idcliente, numero);
+			cpDAO.inserirConta(idcliente, cc);
 		}
 		
-		else if(produto.equals("Seguro")) {
+		else if(produto.equals("contaPoupanca")) {
+			Double valorConta = Double.parseDouble(req.getParameter("valorPoupanca"));
+			
+			// Gera um numero aleatorio que será usado para a conta.
 			Random random = new Random();
 			int numero = random.nextInt(1000);
 			
-			Seguro seguro = new Seguro(numero, 20.000);
+			ContaPoupanca cp = new ContaPoupanca(numero);
+			cp.depositar(valorConta);
+			cp.ativar();
+			
+			String tipo = "Conta Poupanca";
+			
+			ContaDAO contaDAO = new ContaDAO(); 
+			contaDAO.inserir(cp, tipo);
+			
+			ClienteProdutoDAO cpDAO = new ClienteProdutoDAO();
+			cpDAO.inserirConta(idcliente, cp);
+		}
+		
+		else if(produto.equals("Seguro")) {
+			Double valorSeguro = Double.parseDouble(req.getParameter("valorSeguro"));
+			
+			Random random = new Random();
+			int numero = random.nextInt(1000);
+			
+			Seguro seguro = new Seguro(numero, valorSeguro);
 			
 			SeguroDAO seguroDAO = new SeguroDAO();
 			seguroDAO.inserir(seguro);
