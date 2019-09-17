@@ -11,6 +11,6 @@
 	
 	<a href="formPessoaFisica.jsp">Cadastro Pessoa Física</a><br><br>
 	<a href="formPessoaJuridica.jsp">Cadastro Pessoa Jurídica</a><br><br>
-	<a href="formConta.jsp">Lista de Clientes</a>
+	<a href="formConta.jsp">Cadastro de Produtos</a>
 </body>
 </html>
