@@ -22,7 +22,8 @@ public class CadastroProduto implements Servidor {
 	public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int idcliente = Integer.parseInt(req.getParameter("idcliente"));
 		String produto = req.getParameter("produto");
-		System.out.println(" \n \n \n Aqui jfjdjdfhdjfhdjfhdjfhdjfdjfdhjh");
+		
+		
 		if(produto.equals("contaCorrente")) {
 			Double valorConta = Double.parseDouble(req.getParameter("valorCorrente"));
 			
