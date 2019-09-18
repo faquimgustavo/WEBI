@@ -51,4 +51,45 @@ public class PessoaFisicaDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	
+	public PessoaFisica pesquisarId(int id) {
+		String sql = "select * from pessoaFisica where idcliente = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			PessoaFisica pf = new PessoaFisica();
+			
+			if(rs.next()) {
+				pf = new PessoaFisica(rs.getInt("idcliente"), rs.getString("nome"), rs.getString("endereco"), rs.getString("telefone"), rs.getString("cpf"), rs.getString("nomePai"), rs.getString("nomeMae"));
+			}
+			return pf;
+			
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	public boolean verifica(int id) {
+		String sql = "select * from pessoaFisica where idcliente = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			boolean verifica = false;
+			if(rs.next()) {
+				if(rs.getInt("idcliente") != 0) {
+					verifica = true;
+				}
+				else {
+					verifica = false;
+				}
+			}
+			return verifica;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

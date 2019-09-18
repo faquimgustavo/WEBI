@@ -1,3 +1,10 @@
+<%@page import="br.com.egr.banco.dao.PessoaFisicaDAO"%>
+<%@page import="br.com.egr.banco.model.PessoaFisica"%>
+<%@page import="br.com.egr.banco.dao.PessoaJuridicaDAO"%>
+<%@page import="br.com.egr.banco.model.PessoaJuridica"%>
+<%@page import="br.com.egr.banco.model.Cliente"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.egr.banco.dao.ClienteDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,13 +20,32 @@
 			<tr>
 				<th>Id</th>
 				<th>Nome</th>
+				<th>Telefone</th>
+				<th>Endereco</th>
 				<th>CPF</th>
-				<th>Nome Mãe</th>
-				<th>Nome Pai</th>
+				<th>Produtos</th>
 			</tr>
 			<%
-				List<PessoaFisica> 
+			
+				List<Cliente> clientes = (List<Cliente>) request.getAttribute("lista");
+				List<PessoaFisica> pfs = (List<PessoaFisica>) request.getAttribute("listapf");
+			
+				for(PessoaFisica pf : pfs){	
 			%>
+			<tr>
+				<td><%=pf.getIdcliente()%></td>
+				<td><%=pf.getNome()%></td>
+				<td><%=pf.getTelefone()%></td>
+				<td><%=pf.getEndereco()%></td>
+				<td><%=pf.getCpf()%></td>
+				<td><%=pf.getProdutos()%></td>
+				
+			</tr>
+			
+			<%		
+				}
+			%>
+			
 			
 		</table>
 </body>

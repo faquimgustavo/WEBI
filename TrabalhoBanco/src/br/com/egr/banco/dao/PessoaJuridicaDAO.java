@@ -48,4 +48,45 @@ public class PessoaJuridicaDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	
+	public PessoaJuridica pesquisarId(int id) {
+		String sql = "select * from pessoaJuridica where idcliente = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			PessoaJuridica pj = new PessoaJuridica();
+			
+			if(rs.next()) {			
+				pj = new PessoaJuridica(rs.getInt("idcliente"), rs.getString("nome"), rs.getString("endereco"), rs.getString("telefone"),rs.getString("cnpj"), rs.getString("nomeFantasia"));
+			}
+			return pj;
+			
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	public boolean verifica(int id) {
+		String sql = "select * from pessoaJuridica where idcliente = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			boolean verifica = false;
+			if(rs.next()) {
+				if(rs.getInt("idcliente") != 0) {
+					verifica = true;
+				}
+				else {
+					verifica = false;
+				}
+			}
+			return verifica;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

@@ -39,7 +39,8 @@ public class CadastroCliente implements Servidor {
 			
 			pf.setIdcliente(id);
 			
-			new PessoaFisicaDAO().inserir(pf);	
+			new PessoaFisicaDAO().inserir(pf);
+		
 		}
 		else if(tipo.equals("PessoaJuridica")) {
 			String nomeFantasia = req.getParameter("nomeFantasia");

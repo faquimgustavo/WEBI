@@ -1,8 +1,12 @@
 package br.com.egr.banco.control;
+import br.com.egr.banco.dao.ClienteDAO;
 import br.com.egr.banco.dao.PessoaFisicaDAO;
+import br.com.egr.banco.dao.PessoaJuridicaDAO;
+import br.com.egr.banco.model.Cliente;
 import br.com.egr.banco.model.PessoaFisica;
-import br.com.lucasfaria.javawebcrud.dao.AlunoDao;
-import br.com.lucasfaria.javawebcrud.model.Aluno;
+import br.com.egr.banco.model.PessoaJuridica;
+
+
 
 import java.io.IOException;
 import java.util.List;
@@ -17,8 +21,15 @@ public class ListaCliente implements Servidor {
 
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<PessoaFisica> listapf = new PessoaFisicaDAO.listarPF();
-		List<Aluno> lista = new AlunoDao().listarTudo();
+		List<Cliente> lista = new ClienteDAO().listarTudo();
+		List<PessoaFisica> listapf = new PessoaFisicaDAO().listarPF();
+		List<PessoaJuridica> listapj = new PessoaJuridicaDAO().listarPJ();
+		
+		
+		req.setAttribute("lista", lista);
+		req.setAttribute("listapf", listapf);
+		req.setAttribute("listapj", listapj);
+		return "listaCliente.jsp";
 	}
 
 }

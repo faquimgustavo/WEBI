@@ -11,7 +11,6 @@ import java.util.Random;
 import br.com.egr.banco.dao.ClienteProdutoDAO;
 import br.com.egr.banco.dao.ContaDAO;
 import br.com.egr.banco.dao.SeguroDAO;
-import br.com.egr.banco.model.Conta;
 import br.com.egr.banco.model.ContaCorrente;
 import br.com.egr.banco.model.ContaPoupanca;
 import br.com.egr.banco.model.Seguro;
@@ -60,9 +59,6 @@ public class CadastroProduto implements Servidor {
 			
 			ContaDAO contaDAO = new ContaDAO(); 
 			contaDAO.inserir(cp, tipo);
-			
-			ClienteProdutoDAO cpDAO = new ClienteProdutoDAO();
-			cpDAO.inserirConta(idcliente, cp);
 		}
 		
 		else if(produto.equals("Seguro")) {
@@ -75,10 +71,6 @@ public class CadastroProduto implements Servidor {
 			
 			SeguroDAO seguroDAO = new SeguroDAO();
 			seguroDAO.inserir(seguro);
-			
-			ClienteProdutoDAO cpDAO = new ClienteProdutoDAO();
-			cpDAO.inserirSeguro(idcliente,numero);
-			
 		}
 		return "index.jsp";
 	}

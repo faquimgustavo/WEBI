@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.egr.banco.conexao.Conexao;
 import br.com.egr.banco.model.Cliente;
@@ -37,6 +38,19 @@ public class ClienteDAO {
 			return id;
 			
 		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public List<Cliente> listarTudo() {
+		String sql = "select * from cliente";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			List<Cliente> lista = new ArrayList<Cliente>();
+			stmt.close();
+			return lista;
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
