@@ -2,9 +2,12 @@ package br.com.egr.banco.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import br.com.egr.banco.conexao.Conexao;
 import br.com.egr.banco.model.Conta;
+import br.com.egr.banco.model.PessoaJuridica;
 
 
 public class ContaDAO {
@@ -29,4 +32,19 @@ public class ContaDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	
+	/*public ArrayList<Conta> listarTudo(){
+		String sql = "select * from conta";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			ArrayList<Conta> lista = new ArrayList<Conta>();
+			while(rs.next()) {
+				Conta c conta = new Conta(rs.getInt("numero"), rs.getDouble("saldo"), rs.getString("situacao"), rs.getString("tipo"));
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	} */ // Não posso criar um metodo para listar todos as contas pq Conta é classe abstrata e não pode ser instanciada.
 }
