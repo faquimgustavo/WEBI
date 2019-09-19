@@ -35,13 +35,14 @@ public class CadastroProduto implements Servidor{
 		}
 		
 		else if(pfDAO.verifica(idcliente)) {
-			c = pfDAO.pesquisarId(idcliente);	
+			c = pfDAO.pesquisarId(idcliente);
 		}
 		
-		if(produto.equals("ContaPoupanca")) {
-			
+		if(produto.equals("contaPoupanca")) {
 		}
-		
+		else if(produto.equals("contaCorrente")) {
+			c.addCCorrente(numero);
+		}
 		return "index.jsp";
 	}
 	
