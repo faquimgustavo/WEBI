@@ -8,7 +8,10 @@ public class Teste {
 		PessoaFisica pf = new PessoaFisica();
 		PessoaFisicaDAO pfDAO = new PessoaFisicaDAO();
 		
-		pfDAO.listarPF();
+		pf.addCCorrente(12);
+		// metodo addCCorente não funciona
+		
+		System.out.println(pf.getProdutos());
 		
 		
 	}

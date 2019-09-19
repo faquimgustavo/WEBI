@@ -51,7 +51,7 @@ public class PessoaJuridicaDAO {
 	
 	
 	public PessoaJuridica pesquisarId(int id) {
-		String sql = "select * from pessoaJuridica where idcliente = ?";
+		String sql = "select c.idcliente, c.nome, pj.cnpj, c.endereco, c.telefone, pj.nomeFantasia from pessoaJuridica pj inner join cliente c on pj.idcliente = c.idcliente where c.idcliente = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, id);

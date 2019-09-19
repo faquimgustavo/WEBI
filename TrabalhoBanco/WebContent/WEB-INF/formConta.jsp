@@ -37,7 +37,7 @@
 		<h4>Adicionar produto</h4>
 		<input type="radio" name="produto" value="contaCorrente"> Conta Corrente <br><br>
   		<input type="radio" name="produto" value="contaPoupanca"> Conta Poupança <br><br>
-  		<input type="radio" name="produto" value="Seguro"> Seguro <br><br> Valor do Seguro<br> R$ <input type="number" name="valorSeguro" value="5000"><br><br>  
+  		<input type="radio" name="produto" value="Seguro"> Seguro <br> Valor do Seguro R$ <input type="number" name="valorSeguro" value="5000"><br><br>  
 		
 		<br><br>
 		

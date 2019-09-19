@@ -1,28 +1,24 @@
 package br.com.egr.banco.control;
 
-
 import java.io.IOException;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Random;
 
-import br.com.egr.banco.dao.ClienteProdutoDAO;
-import br.com.egr.banco.dao.ContaDAO;
 import br.com.egr.banco.dao.PessoaFisicaDAO;
 import br.com.egr.banco.dao.PessoaJuridicaDAO;
-import br.com.egr.banco.dao.SeguroDAO;
-import br.com.egr.banco.model.ContaCorrente;
-import br.com.egr.banco.model.ContaPoupanca;
+import br.com.egr.banco.model.Cliente;
 import br.com.egr.banco.model.PessoaFisica;
 import br.com.egr.banco.model.PessoaJuridica;
-import br.com.egr.banco.model.Seguro;
 
-public class CadastroProduto implements Servidor {
+public class CadastroProduto implements Servidor{
 
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
 		int idcliente = Integer.parseInt(req.getParameter("idcliente"));
 		String produto = req.getParameter("produto");
 		
@@ -32,74 +28,21 @@ public class CadastroProduto implements Servidor {
 		
 		PessoaJuridicaDAO pjDAO = new PessoaJuridicaDAO();
 		PessoaFisicaDAO pfDAO = new PessoaFisicaDAO();
-		PessoaJuridica pj = new PessoaJuridica();
-		PessoaFisica pf = new PessoaFisica();
+		Cliente c = new PessoaJuridica();
 		
-		// Verifica se é o idcliente passando pela URL é de uma pessoa juridica;
 		if(pjDAO.verifica(idcliente)) {
-			if(produto.equals("contaCorrente")) {
-				pj.addCCorrente(numero);
-			}
-			else if(produto.equals("contaPoupanca")) {
-				pj.addCPoupanca(numero);
-			}
-			else if(produto.equals("Seguro")) {
-				Double valorSeguro = Double.parseDouble(req.getParameter("valorSeguro"));
-				pj.addSeguro(numero, valorSeguro);
-			}
+			c = pjDAO.pesquisarId(idcliente);
 		}
-		// Verifica se o idcliente passado pela URL é de uma pessa fisica.
+		
 		else if(pfDAO.verifica(idcliente)) {
-			if(produto.equals("contaCorrente")) {
-				pf.addCCorrente(numero);
-			}
-			else if(produto.equals("contaPoupanca")) {
-				pf.addCPoupanca(numero);
-			}
-			else if(produto.equals("Seguro")) {
-				Double valorSeguro = Double.parseDouble(req.getParameter("valorSeguro"));
-				pf.addSeguro(numero, valorSeguro);
-			}
+			c = pfDAO.pesquisarId(idcliente);	
 		}
 		
-		if(produto.equals("contaCorrente")) {
-			Double valorConta = Double.parseDouble(req.getParameter("valorCorrente"));
+		if(produto.equals("ContaPoupanca")) {
 			
-			ContaCorrente cc = new ContaCorrente(numero);
-			cc.depositar(valorConta);
-			cc.ativar();
-			
-			
-			String tipo = "Conta Corrente";
-			ContaDAO contaDAO = new ContaDAO(); 
-			contaDAO.inserir(cc, tipo);
-			
-			ClienteProdutoDAO cpDAO = new ClienteProdutoDAO();
-			cpDAO.inserirConta(idcliente, cc);
 		}
 		
-		else if(produto.equals("contaPoupanca")) {
-			Double valorConta = Double.parseDouble(req.getParameter("valorPoupanca"));
-			
-			
-			ContaPoupanca cp = new ContaPoupanca(numero);
-			cp.depositar(valorConta);
-			cp.ativar();
-			
-			String tipo = "Conta Poupanca";
-			
-			ContaDAO contaDAO = new ContaDAO(); 
-			contaDAO.inserir(cp, tipo);
-		}
-		
-		else if(produto.equals("Seguro")) {
-			Double valorSeguro = Double.parseDouble(req.getParameter("valorSeguro"));
-			Seguro seguro = new Seguro(numero, valorSeguro);
-			
-			SeguroDAO seguroDAO = new SeguroDAO();
-			seguroDAO.inserir(seguro);
-		}
 		return "index.jsp";
 	}
-
+	
 }
