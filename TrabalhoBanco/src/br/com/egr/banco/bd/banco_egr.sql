@@ -5,6 +5,7 @@ create table cliente(
 idcliente int not null auto_increment,
 nome varchar(60) not null,
 endereco varchar(60) not null,
+telefone varchar(15) not null,
 primary key(idcliente)
 );
 
