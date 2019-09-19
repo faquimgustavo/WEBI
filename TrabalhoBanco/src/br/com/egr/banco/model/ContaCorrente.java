@@ -1,10 +1,15 @@
 package br.com.egr.banco.model;
 public class ContaCorrente extends Conta {
 	
+	public ContaCorrente() {
+		
+	}
+
 	public ContaCorrente(int numero) {
 		super(numero);
 		// TODO Auto-generated constructor stub
 	}
+
 
 	@Override
 	public boolean sacar(double valor) {

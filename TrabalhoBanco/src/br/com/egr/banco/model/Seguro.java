@@ -5,6 +5,8 @@ public class Seguro implements Produto {
 	private double valor;
 	private boolean situacao;
 
+	
+	
 	public Seguro(int numero, double valor) {
 		this.setNumero(numero);
 		this.valor = valor;

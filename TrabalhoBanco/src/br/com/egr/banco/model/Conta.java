@@ -7,6 +7,10 @@ public abstract class Conta implements Produto {
 	private double saldo;
 	private boolean situacao;
 
+	
+	public Conta() {
+		
+	}
 	Conta(int numero) {
 		this.setNumero(numero);
 		this.saldo = 0;

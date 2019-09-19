@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.egr.banco.dao.PessoaFisicaDAO;
 import br.com.egr.banco.dao.PessoaJuridicaDAO;
 import br.com.egr.banco.model.Cliente;
+import br.com.egr.banco.model.Conta;
 import br.com.egr.banco.model.ContaPoupanca;
 import br.com.egr.banco.model.PessoaFisica;
 import br.com.egr.banco.model.PessoaJuridica;
@@ -53,15 +54,20 @@ public class CadastroProduto implements Servidor{
 		
 		String nomeClasse = "br.com.egr.banco.model." + tipo;
 		Class<?> cliente = Class.forName(nomeClasse);
-		
+		Cliente clientes = (Cliente) cliente.getDeclaredConstructor().newInstance();
 		
 		String classeNome = "br.com.egr.banco.model." + tipoProduto;
 		Class<?> produto = Class.forName(classeNome);
+		//Produto produtos = (Produto) produto.getDeclaredConstructor().newInstance();
+		Conta conta = (Conta) produto.getDeclaredConstructor().newInstance();
 		
+		conta.setNumero(numero);
+		System.out.println("\n \n Numero Conta: " + conta.getNumero());
+	
 		
-		Produto produtos = (Produto) produto.getDeclaredConstructor().newInstance();
-		// Como acessar um metodo através da classe generica.
-		// preciso acessar o cliente.addCContaCorrente();
+		//System.out.println("Numero da conta: " + conta.getNumero());
+		clientes.addCPoupanca(conta.getNumero()); // Dando problema
+		//System.out.println("\n \n Cliente Produto:  " + clientes.getProdutos());
 		
 		
 		/*if(produto.equals("contaPoupanca")) {
