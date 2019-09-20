@@ -1,3 +1,12 @@
+<%@page import="br.com.egr.banco.dao.ContaDAO"%>
+<%@page import="br.com.egr.banco.dao.PessoaFisicaDAO"%>
+<%@page import="br.com.egr.banco.model.PessoaFisica"%>
+<%@page import="br.com.egr.banco.dao.PessoaJuridicaDAO"%>
+<%@page import="br.com.egr.banco.model.PessoaJuridica"%>
+<%@page import="br.com.egr.banco.model.Cliente"%>
+<%@page import="br.com.egr.banco.model.Conta"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.egr.banco.dao.ClienteDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,6 +18,15 @@
 <body>
 		<h4>Contas</h4>
 		<select name="idconta">
+		<%	
+		List<Conta> listaConta = new ContaDAO().listarTudo();
+			 
+			out.println("<optgroup label='Contas do Cliente'>");
+			for(Conta ct : listaConta){
+				out.println("'> Numero: " + ct.getNumero() + " - Saldo: " + ct.getSaldo() + "<br> </option>");
+			}
+			
+			%>
 		
 		</select><br><br>
 	
