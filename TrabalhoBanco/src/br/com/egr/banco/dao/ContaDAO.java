@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.egr.banco.conexao.Conexao;
 import br.com.egr.banco.model.Cliente;
@@ -35,6 +36,18 @@ public class ContaDAO {
 		}
 	}
 	
+	public List<Conta> listarTudo() {
+		String sql = "select * from conta";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			List<Conta> lista = new ArrayList<Conta>();
+			stmt.close();
+			return lista;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 	
 	/*public ArrayList<Conta> listarTudo(){
 		String sql = "select * from conta";
