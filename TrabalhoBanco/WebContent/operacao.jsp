@@ -38,7 +38,7 @@
 		</select><br><br>
 		
 
-		<input type="submit" value="Pesquisar Contas" href="operacao2.jsp">		
+		<input type="submit" value="Pesquisar Contas">		
 	</form>
 	
 
