@@ -8,6 +8,7 @@ import java.util.List;
 
 import br.com.egr.banco.conexao.Conexao;
 import br.com.egr.banco.model.PessoaFisica;
+import br.com.egr.banco.model.PessoaJuridica;
 
 
 public class PessoaFisicaDAO {
@@ -60,7 +61,7 @@ public class PessoaFisicaDAO {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
-			PessoaFisica pf = new PessoaFisica();
+			PessoaFisica pf = null;
 			
 			if(rs.next()) {
 				pf = new PessoaFisica(rs.getInt("idcliente"), rs.getString("nome"), rs.getString("endereco"), rs.getString("telefone"), rs.getString("cpf"), rs.getString("nomePai"), rs.getString("nomeMae"));

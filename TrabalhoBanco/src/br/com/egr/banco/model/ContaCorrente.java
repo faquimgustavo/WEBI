@@ -25,8 +25,8 @@ public class ContaCorrente extends Conta {
 		return this.getSaldo() * 0.05;
 	}
 
-	@Override
+	/*@Override
 	public String getTipo() {
 		return "corrente";
-	}
+	}*/
 }

@@ -12,7 +12,7 @@ public abstract class Cliente {
 	
 	
 	public Cliente(){
-		
+		this.produtos = new ArrayList<Produto>();
 	}
 	
 	Cliente(String nome, String endereco, String telefone) {

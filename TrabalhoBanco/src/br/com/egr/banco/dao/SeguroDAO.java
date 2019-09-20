@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 
 
 import br.com.egr.banco.conexao.Conexao;
+import br.com.egr.banco.model.Cliente;
 import br.com.egr.banco.model.Seguro;
 
 public class SeguroDAO {
@@ -16,16 +17,14 @@ public class SeguroDAO {
 		this.conexao = new Conexao().getConexao();
 	}
 	
-	public void inserir(Seguro seguro) {
-		System.out.println("Entrou aqui!!!!! \n \n \n \n");
-		System.out.println("\n \n " + seguro.getNumero() + "\n \n ");
-		System.out.println("\n \n " + seguro.getValor() + "\n \n ");
-		String sql = "insert into seguro(numero,valor,situacao) values (?,?,?)";
+	public void inserir(Seguro seguro, Cliente cliente) {
+		String sql = "insert into seguro(numero,valor,situacao, cliente_idcliente) values (?,?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, seguro.getNumero());
 			stmt.setDouble(2, seguro.getValor());
 			stmt.setBoolean(3, seguro.getSituacao());
+			stmt.setInt(4, cliente.getIdcliente());
 			stmt.execute();
 			stmt.close();
 		} catch (Exception e) {

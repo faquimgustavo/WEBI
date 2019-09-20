@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import br.com.egr.banco.conexao.Conexao;
+import br.com.egr.banco.model.Cliente;
 import br.com.egr.banco.model.Conta;
 import br.com.egr.banco.model.PessoaJuridica;
 
@@ -18,14 +19,15 @@ public class ContaDAO {
 		this.conexao = new Conexao().getConexao();
 	}
 	
-	public void inserir(Conta conta, String tipo) {
-		String sql = "insert into conta (numero, saldo,situacao,tipo) values (?,?,?,?)";
+	public void inserir(Conta conta, String tipo, Cliente cliente) {
+		String sql = "insert into conta (numero, saldo,situacao,tipo, cliente_idcliente) values (?,?,?,?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1,conta.getNumero() );
 			stmt.setDouble(2, conta.getSaldo());
 			stmt.setBoolean(3, conta.getSituacao());
 			stmt.setString(4,tipo);
+			stmt.setInt(5, cliente.getIdcliente());
 			stmt.execute();
 			stmt.close();
 		}catch (Exception e) {

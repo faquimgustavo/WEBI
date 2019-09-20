@@ -56,7 +56,8 @@ public class PessoaJuridicaDAO {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
-			PessoaJuridica pj = new PessoaJuridica();
+//			PessoaJuridica pj = new PessoaJuridica();
+			PessoaJuridica pj = null;
 			
 			if(rs.next()) {			
 				pj = new PessoaJuridica(rs.getInt("idcliente"), rs.getString("nome"), rs.getString("endereco"), rs.getString("telefone"),rs.getString("cnpj"), rs.getString("nomeFantasia"));
