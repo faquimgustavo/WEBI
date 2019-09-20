@@ -5,7 +5,9 @@ create table cliente(
 idcliente int not null auto_increment,
 nome varchar(60) not null,
 endereco varchar(60) not null,
+<<<<<<< Updated upstream
 telefone varchar(15) not null,
+>>>>>>> Stashed changes
 primary key(idcliente)
 );
 
