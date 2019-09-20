@@ -16,37 +16,17 @@
 <body>
 	<h4>Lista de Clientes</h4>
 	<br><br><h5>Pessoas Físicas</h5>
-		<table border="1">
-			<tr>
-				<th>Id</th>
-				<th>Nome</th>
-				<th>Telefone</th>
-				<th>Endereco</th>
-				<th>CPF</th>
-				<th>Produtos</th>
-			</tr>
 			<%
-			
 				List<Cliente> clientes = (List<Cliente>) request.getAttribute("lista");
 				List<PessoaFisica> pfs = (List<PessoaFisica>) request.getAttribute("listapf");
 			
-				for(PessoaFisica pf : pfs){	
+				for(PessoaFisica pf : pfs){
+					out.println("id: " + pf.getIdcliente() + "| Nome: " + pf.getNome() +"<br>Telefone: "  + pf.getTelefone() +"<br>CPF: " + pf.getCpf());
+					out.println("<br>Produtos: <br>" + pf.getProdutos().size());
 			%>
-			<tr>
-				<td><%=pf.getIdcliente()%></td>
-				<td><%=pf.getNome()%></td>
-				<td><%=pf.getTelefone()%></td>
-				<td><%=pf.getEndereco()%></td>
-				<td><%=pf.getCpf()%></td>
-				<td><%=pf.getProdutos()%></td>
-				
-			</tr>
-			
 			<%		
 				}
 			%>
-			
-			
-		</table>
+
 </body>
 </html>
