@@ -36,8 +36,13 @@ public class Seguro implements Produto {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
+	
+	public void setValor(int numero) {
+		this.valor = numero;
+	}
 
 	public boolean getSituacao() {
 		return situacao;
 	}
+	
 }

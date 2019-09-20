@@ -18,12 +18,12 @@ public class SeguroDAO {
 	}
 	
 	public void inserir(Seguro seguro, Cliente cliente) {
-		String sql = "insert into seguro(numero,valor,situacao, cliente_idcliente) values (?,?,?)";
+		String sql = "insert into seguro(numero,valor,situacao, cliente_idcliente) values (?,?,?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, seguro.getNumero());
 			stmt.setDouble(2, seguro.getValor());
-			stmt.setBoolean(3, seguro.getSituacao());
+			stmt.setBoolean(3, true);
 			stmt.setInt(4, cliente.getIdcliente());
 			stmt.execute();
 			stmt.close();

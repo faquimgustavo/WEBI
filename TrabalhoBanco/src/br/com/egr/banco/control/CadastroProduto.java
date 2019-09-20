@@ -71,6 +71,7 @@ public class CadastroProduto implements Servidor{
 		if (prod instanceof Conta) {
 			conta = (Conta) prod;
 			conta.setNumero(numero);
+			conta.ativar();
 			if(conta instanceof ContaCorrente) {cliente.addCCorrente(conta.getNumero());}
 			else if(conta instanceof ContaPoupanca) {cliente.addCPoupanca(conta.getNumero());}
 			
@@ -79,7 +80,11 @@ public class CadastroProduto implements Servidor{
 			
 			
 		} else if (prod instanceof Seguro) {
+			int valorSeguro = Integer.parseInt(req.getParameter("valorSeguro"));
 			seguro = (Seguro) prod;
+			seguro.setNumero(numero);
+			seguro.setValor(valorSeguro);
+			
 			SeguroDAO seguroDAO = new SeguroDAO();
 			seguroDAO.inserir(seguro, cliente);
 		}
