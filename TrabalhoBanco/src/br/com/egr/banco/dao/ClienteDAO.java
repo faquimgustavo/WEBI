@@ -24,11 +24,11 @@ public class ClienteDAO {
 	public int inserir(Cliente cliente) {
 		String sql = "insert into cliente(nome,endereco,telefone) values (?,?,?)";
 		try {
+			
 			stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, cliente.getNome());
-			stmt.setString(2, cliente.getTelefone());
-			stmt.setString(3, cliente.getEndereco());
-			
+			stmt.setString(2, cliente.getEndereco());
+			stmt.setString(3, cliente.getTelefone());
 			stmt.execute();
 			
 			ResultSet rs = stmt.getGeneratedKeys();
