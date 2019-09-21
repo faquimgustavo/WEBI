@@ -22,9 +22,22 @@ public class ListaConta implements Servidor {
 		
 		int idcliente = Integer.parseInt(req.getParameter("idcliente"));
 		
+		PessoaJuridicaDAO pjDAO = new PessoaJuridicaDAO();
+		PessoaFisicaDAO pfDAO = new PessoaFisicaDAO();
+		Cliente cliente = null;
+		
+		if(pfDAO.pesquisarId(idcliente) != null) {
+			cliente = new PessoaFisicaDAO().pesquisarId(idcliente);
+			
+		}
+		else if(pjDAO.pesquisarId(idcliente) != null) {
+			cliente = new PessoaJuridicaDAO().pesquisarId(idcliente);
+		}
+		
 		List<Conta> lista = new ContaDAO().pesquisarConta(idcliente);
 		
 		req.setAttribute("lista", lista);
+		req.setAttribute("cliente", cliente);
 	
 		return "operacao2.jsp";
 	}

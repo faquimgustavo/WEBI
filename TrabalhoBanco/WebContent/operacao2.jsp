@@ -16,13 +16,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<h4>Contas</h4>
+		<%
+		
+		String tipoCliente = request.getAttribute("cliente").getClass().getSimpleName();
+		
+		String classeNome = "br.com.egr.banco.model." + tipoCliente;
+		Class<?> produto = Class.forName(classeNome);
+		Cliente c = (Cliente) produto.getDeclaredConstructor().newInstance();
+		
+		c = (Cliente) request.getAttribute("cliente");
+	
+		out.println("<h2> Cliente: " + c.getNome()+ "</h2>");
+		
+		%>
+		
+		<br><h4>Dados da Conta</h4>
+		<form action="control" method="post">	
 		<select name="idconta">
 		<%	
 			//List<Conta> listaConta = new ContaDAO().listarTudo();
 			List<Conta> contas = (List<Conta>) request.getAttribute("lista");
-			 
-			
 			
 			out.println("<optgroup label='Contas do Cliente'>");
 			for(Conta ct : contas){
@@ -32,16 +45,15 @@
 			%>
 		
 		</select><br><br>
-	
 		
-		<h4>Adicionar produto</h4>
+		<h4>Operação</h4>
 		<input type="radio" name="produto" value="ContaCorrente"> Saque <br><br>
   		<input type="radio" name="produto" value="ContaPoupanca"> Deposito <br><br>
   		<br> Valor<br> 
   		R$ <input type="number" name="valorOperacao" value="5000"><br><br>  
 		
-		<br><br>
-		
+		<input type="submit" value="Realizar Operação">
+		</form>
 
 </body>
 </html>
