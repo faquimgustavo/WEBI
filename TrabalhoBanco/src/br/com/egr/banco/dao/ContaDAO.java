@@ -37,7 +37,7 @@ public class ContaDAO {
 	}
 	
 	public List<Conta> listarTudo() {
-		String sql = "select * from conta";
+		String sql = "select * from cliente n inner join cliente_conta c on  n.idcliente = c.idcliente where n.idcliente = 1;";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
