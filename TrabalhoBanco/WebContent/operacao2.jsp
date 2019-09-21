@@ -19,11 +19,14 @@
 		<h4>Contas</h4>
 		<select name="idconta">
 		<%	
-		List<Conta> listaConta = new ContaDAO().listarTudo();
+			//List<Conta> listaConta = new ContaDAO().listarTudo();
+			List<Conta> contas = (List<Conta>) request.getAttribute("lista");
 			 
+			
+			
 			out.println("<optgroup label='Contas do Cliente'>");
-			for(Conta ct : listaConta){
-				out.println("'> Numero: " + ct.getNumero() + " - Saldo: " + ct.getSaldo() + "<br> </option>");
+			for(Conta ct : contas){
+				out.println("<option value='" + ct.getNumero() + "'> Numero: " + ct.getNumero() + " - Saldo: " + ct.getSaldo() + "<br> </option>");
 			}
 			
 			%>

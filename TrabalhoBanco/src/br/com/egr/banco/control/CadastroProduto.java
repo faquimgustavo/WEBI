@@ -46,7 +46,6 @@ public class CadastroProduto implements Servidor{
 		
 		if(pfDAO.pesquisarId(idcliente) != null) {
 			cliente = new PessoaFisicaDAO().pesquisarId(idcliente);
-			System.out.println("\n \n Cliente: " + cliente.getNome());
 			
 		}
 		else if(pjDAO.pesquisarId(idcliente) != null) {
