@@ -15,9 +15,9 @@ public class ContaPoupanca extends Conta {
 		return this.getSaldo() * 0.01;
 	}
 
-	@Override
+	/*@Override
 	public String getTipo() {
 		return "poupanca";
-	}
+	} */
 
 }

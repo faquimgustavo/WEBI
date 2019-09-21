@@ -19,8 +19,10 @@ import br.com.egr.banco.model.PessoaJuridica;
 public class ListaConta implements Servidor {
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		List<Conta> lista = new ContaDAO().listarTudo();
+		
+		int idcliente = Integer.parseInt(req.getParameter("idcliente"));
+		
+		List<Conta> lista = new ContaDAO().pesquisarConta(idcliente);
 		
 		req.setAttribute("lista", lista);
 	

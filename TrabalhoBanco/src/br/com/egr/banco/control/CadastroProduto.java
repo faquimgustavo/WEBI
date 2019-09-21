@@ -53,15 +53,10 @@ public class CadastroProduto implements Servidor{
 			cliente = new PessoaJuridicaDAO().pesquisarId(idcliente);
 		}
 		
-		//String nomeClasse = "br.com.egr.banco.model." + tipo;
-		//Class<?> cliente = Class.forName(nomeClasse);
-		//Cliente clientes = (Cliente) cliente.getDeclaredConstructor().newInstance();
 		
 		
 		String classeNome = "br.com.egr.banco.model." + tipoProduto;
 		Class<?> produto = Class.forName(classeNome);
-		//Produto produtos = (Produto) produto.getDeclaredConstructor().newInstance();
-		//Conta conta = (Conta) produto.getDeclaredConstructor().newInstance();
 		Produto prod = (Produto) produto.getDeclaredConstructor().newInstance();
 		
 		Conta conta = null;
@@ -89,36 +84,7 @@ public class CadastroProduto implements Servidor{
 			seguroDAO.inserir(seguro, cliente);
 		}
 		
-		/*conta.setNumero(numero);
-		
-		if(conta instanceof ContaCorrente) {
-			cliente.addCCorrente(conta.getNumero());
-		}
-		else if(conta instanceof ContaPoupanca) {
-			cliente.addCPoupanca(conta.getNumero());
-		}*/
-		
-		
-		
-		
-		//System.out.println("Numero da conta: " + conta.getNumero());
-		//clientes.addCPoupanca(conta.getNumero());
-		
-		
-		/*if(produto.equals("contaPoupanca")) {
-			ContaPoupanca cp = new ContaPoupanca(numero);
-			c.addCPoupanca(cp.getNumero());
 			
-		}
-		else if(produto.equals("contaCorrente")) {
-			c.addCCorrente(numero);
-		}
-		else if(produto.equals("Seguro")) {
-			Double valorSeguro = Double.parseDouble(req.getParameter("valorSeguro"));
-			c.addSeguro(numero, valorSeguro);
-		}*/
-		
-		
 		return "index.jsp";
 	} catch (Exception e) {
 		throw new ServletException(e);

@@ -9,7 +9,9 @@ import java.util.List;
 import br.com.egr.banco.conexao.Conexao;
 import br.com.egr.banco.model.Cliente;
 import br.com.egr.banco.model.Conta;
+import br.com.egr.banco.model.ContaCorrente;
 import br.com.egr.banco.model.PessoaJuridica;
+import br.com.egr.banco.model.Produto;
 
 
 public class ContaDAO {
@@ -36,12 +38,27 @@ public class ContaDAO {
 		}
 	}
 	
-	public List<Conta> listarTudo() {
-		String sql = "select * from cliente n inner join cliente_conta c on  n.idcliente = c.idcliente where n.idcliente = 1;";
+
+	
+	public List<Conta> pesquisarConta(int idcliente) {
+		String sql = "select * from conta where cliente_idcliente = ?;";
 		try {
-			stmt = conexao.prepareStatement(sql);
+			stmt = conexao.prepareStatement(sql);	
+			stmt.setInt(1, idcliente);
 			ResultSet rs = stmt.executeQuery();
 			List<Conta> lista = new ArrayList<Conta>();
+			
+			
+			while(rs.next()) {
+				String classeNome = "br.com.egr.banco.model." + rs.getString("tipo");
+				Class<?> conta = Class.forName(classeNome);
+				Conta cont = (Conta) conta.getDeclaredConstructor().newInstance();
+				
+				cont.setNumero(rs.getInt("numero"));
+				cont.depositar(rs.getDouble("saldo"));
+				cont.ativar();
+				lista.add(cont);
+			}
 			stmt.close();
 			return lista;
 		} catch (Exception e) {
