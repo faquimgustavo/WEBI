@@ -99,8 +99,8 @@ public class ContaDAO {
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setDouble(1,conta.getSaldo());
-			stmt.setInt(1,conta.getNumero());
-			int updateCount = stmt.executeUpdate(sql);
+			stmt.setInt(2,conta.getNumero());
+			stmt.execute();
 			stmt.close();
 		}catch (Exception e) {
 			throw new RuntimeException(e);
