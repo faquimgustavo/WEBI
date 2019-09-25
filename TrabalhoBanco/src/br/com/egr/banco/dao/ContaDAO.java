@@ -66,6 +66,47 @@ public class ContaDAO {
 		}
 	}
 	
+	
+	public  Conta pesquisarNumero(int numConta) {
+		String sql = "select * from conta where numero = ?;";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, numConta);
+			ResultSet rs = stmt.executeQuery();
+			Conta ct = null;
+			
+			
+			if(rs.next()) {	
+				String classeNome = "br.com.egr.banco.model." + rs.getString("tipo");
+				Class<?> conta = Class.forName(classeNome);
+				Conta cont = (Conta) conta.getDeclaredConstructor().newInstance();
+				
+				cont.setNumero(rs.getInt("numero"));
+				cont.depositar(rs.getDouble("saldo"));
+				cont.ativar();
+				ct = cont;		
+				
+			}
+			return ct;
+			
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void atualizar(Conta conta) {
+		String sql = "UPDATE conta SET saldo = ? WHERE numero = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setDouble(1,conta.getSaldo());
+			stmt.setInt(1,conta.getNumero());
+			int updateCount = stmt.executeUpdate(sql);
+			stmt.close();
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	/*public ArrayList<Conta> listarTudo(){
 		String sql = "select * from conta";
 		try {

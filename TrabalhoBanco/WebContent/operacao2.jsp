@@ -31,7 +31,7 @@
 		%>
 		
 		<br><h4>Dados da Conta</h4>
-		<form action="control" method="post">	
+		<form action="control?x=Operacao" method="post">	
 		<select name="idconta">
 		<%	
 			//List<Conta> listaConta = new ContaDAO().listarTudo();
@@ -47,8 +47,8 @@
 		</select><br><br>
 		
 		<h4>Operação</h4>
-		<input type="radio" name="produto" value="ContaCorrente"> Saque <br><br>
-  		<input type="radio" name="produto" value="ContaPoupanca"> Deposito <br><br>
+		<input type="radio" name="produto" value="saque"> Saque <br><br>
+  		<input type="radio" name="produto" value="deposito"> Deposito <br><br>
   		<br> Valor<br> 
   		R$ <input type="number" name="valorOperacao" value="5000"><br><br>  
 		
