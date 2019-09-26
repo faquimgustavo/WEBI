@@ -49,6 +49,22 @@
 		<h4>Operação</h4>
 		<input type="radio" name="produto" value="saque"> Saque <br><br>
   		<input type="radio" name="produto" value="deposito"> Deposito <br><br>
+  		<input type="radio" name="produto" value="transferencia"> Transferência <br><br>
+  		
+  		<h4>Conta de destino</h4>
+  		
+  		<select name="idconta2">
+		<%	
+			List<Conta> listaConta = (List<Conta>) request.getAttribute("listarContas");
+						
+			out.println("<optgroup label='Contas do Cliente'>");
+			for(Conta ct : contas){
+				out.println("<option value='" + ct.getNumero() + "'> Numero: " + ct.getNumero() + " - Saldo: " + ct.getSaldo() + "<br> </option>");
+			}
+			
+		%>
+		
+		</select><br><br>
   		<br> Valor<br> 
   		R$ <input type="number" name="valorOperacao" value="5000"><br><br>  
 		

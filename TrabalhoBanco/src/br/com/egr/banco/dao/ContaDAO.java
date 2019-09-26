@@ -107,17 +107,27 @@ public class ContaDAO {
 		}
 	}
 	
-	/*public ArrayList<Conta> listarTudo(){
+	public List<Conta> listarTudo(){
 		String sql = "select * from conta";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			ArrayList<Conta> lista = new ArrayList<Conta>();
+			Conta ct = null;
 			while(rs.next()) {
-				Conta c conta = new Conta(rs.getInt("numero"), rs.getDouble("saldo"), rs.getString("situacao"), rs.getString("tipo"));
+				String classeNome = "br.com.egr.banco.model." + rs.getString("tipo");
+				Class<?> conta = Class.forName(classeNome);
+				Conta cont = (Conta) conta.getDeclaredConstructor().newInstance();
+				
+				cont.setNumero(rs.getInt("numero"));
+				cont.depositar(rs.getDouble("saldo"));
+				cont.ativar();
+				lista.add(cont);
 			}
+			return lista;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-	} */ // Não posso criar um metodo para listar todos as contas pq Conta é classe abstrata e não pode ser instanciada.
+		
+	} 
 }

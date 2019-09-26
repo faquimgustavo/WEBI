@@ -27,26 +27,39 @@ public class Operacao implements Servidor{
 	try {
 		
 		int numConta = Integer.parseInt(req.getParameter("idconta"));
+		int numConta2 = Integer.parseInt(req.getParameter("idconta2"));
 		String produto = req.getParameter("produto");
 		double valor = Double.parseDouble(req.getParameter("valorOperacao"));
-		
+
 		ContaDAO contaDAO = new ContaDAO();
 		Conta c = contaDAO.pesquisarNumero(numConta);
+		Conta c2 = contaDAO.pesquisarNumero(numConta2);
 		
 		if (produto.equals("saque")) {
+			
 			if (c.getSaldo() >= valor) {
+				
 				c.sacar(valor);
 				
 			}
 			
-			
 		}else if(produto.equals("deposito")) {
+			
 			c.depositar(valor);
+			
+		}else if(produto.equals("transferencia")) {
+			
+			if (c.getSaldo() >= valor) {
+				
+				c.sacar(valor);
+				c2.depositar(valor);
+			}	
+			
 		}
 		
 		contaDAO.atualizar(c);
-		
-			
+		contaDAO.atualizar(c2);
+					
 		return "index.jsp";
 	} catch (Exception e) {
 		throw new ServletException(e);

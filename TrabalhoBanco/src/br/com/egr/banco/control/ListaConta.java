@@ -35,9 +35,11 @@ public class ListaConta implements Servidor {
 		}
 		
 		List<Conta> lista = new ContaDAO().pesquisarConta(idcliente);
+		List<Conta> listarContas = new ContaDAO().listarTudo();
 		
 		req.setAttribute("lista", lista);
 		req.setAttribute("cliente", cliente);
+		req.setAttribute("listarContas", listarContas);
 	
 		return "operacao2.jsp";
 	}
