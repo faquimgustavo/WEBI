@@ -31,6 +31,7 @@
 		%>
 		
 		<br><h4>Dados da Conta</h4>
+		
 		<form action="control?x=Operacao" method="post">	
 		<select name="idconta">
 		<%	
@@ -58,7 +59,7 @@
 			List<Conta> listaConta = (List<Conta>) request.getAttribute("listarContas");
 						
 			out.println("<optgroup label='Contas do Cliente'>");
-			for(Conta ct : contas){
+			for(Conta ct : listaConta){
 				out.println("<option value='" + ct.getNumero() + "'> Numero: " + ct.getNumero() + " - Saldo: " + ct.getSaldo() + "<br> </option>");
 			}
 			

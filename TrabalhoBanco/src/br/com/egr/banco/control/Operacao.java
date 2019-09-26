@@ -27,13 +27,13 @@ public class Operacao implements Servidor{
 	try {
 		
 		int numConta = Integer.parseInt(req.getParameter("idconta"));
-		int numConta2 = Integer.parseInt(req.getParameter("idconta2"));
+		
 		String produto = req.getParameter("produto");
 		double valor = Double.parseDouble(req.getParameter("valorOperacao"));
 
 		ContaDAO contaDAO = new ContaDAO();
 		Conta c = contaDAO.pesquisarNumero(numConta);
-		Conta c2 = contaDAO.pesquisarNumero(numConta2);
+		
 		
 		if (produto.equals("saque")) {
 			
@@ -49,16 +49,23 @@ public class Operacao implements Servidor{
 			
 		}else if(produto.equals("transferencia")) {
 			
+			
 			if (c.getSaldo() >= valor) {
 				
+				int numConta2 = Integer.parseInt(req.getParameter("idconta2"));
+				Conta c2 = contaDAO.pesquisarNumero(numConta2);
 				c.sacar(valor);
 				c2.depositar(valor);
+				contaDAO.atualizar(c2);
+				System.out.println(c.getNumero());
+				System.out.println(c2.getNumero());
+				System.out.println(c2.getSaldo());
 			}	
 			
 		}
 		
 		contaDAO.atualizar(c);
-		contaDAO.atualizar(c2);
+
 					
 		return "index.jsp";
 	} catch (Exception e) {
