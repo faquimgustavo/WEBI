@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Operações</title>
 </head>
 <body>
 		<%
@@ -50,10 +50,9 @@
 		<h4>Operação</h4>
 		<input type="radio" name="produto" value="saque"> Saque <br><br>
   		<input type="radio" name="produto" value="deposito"> Deposito <br><br>
-  		<input type="radio" name="produto" value="transferencia"> Transferência <br><br>
-  		
-  		<h4>Conta de destino</h4>
-  		
+  		<br>
+  		<input type="radio" name="produto" value="transferencia"> Transferência <br>
+  		<p>Conta de destino</p>
   		<select name="idconta2">
 		<%	
 			List<Conta> listaConta = (List<Conta>) request.getAttribute("listarContas");
@@ -64,11 +63,10 @@
 			}
 			
 		%>
-		
 		</select><br><br>
   		<br> Valor<br> 
   		R$ <input type="number" name="valorOperacao" value="5000"><br><br>  
-		
+		<br>
 		<input type="submit" value="Realizar Operação">
 		</form>
 

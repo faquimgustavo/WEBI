@@ -53,7 +53,6 @@ public class CadastroProduto implements Servidor{
 		}
 		
 		
-		
 		String classeNome = "br.com.egr.banco.model." + tipoProduto;
 		Class<?> produto = Class.forName(classeNome);
 		Produto prod = (Produto) produto.getDeclaredConstructor().newInstance();

@@ -11,11 +11,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Operação</title>
+<title>Relatório</title>
 </head>
 <body>
-	
-	<form action="control?x=ListaConta" method="post">
+	<form action="control?x=GeraRelatorio" method="post">
 		<h4>Clientes</h4>
 		<select name="idcliente">
 		<%	
@@ -32,14 +31,9 @@
 				out.println("<option value='" +  pj.getIdcliente() + "'> Nome: " + pj.getNome() + " - CNPJ: " + pj.getCnpj() + "<br> </option>");
 			}
 			%>
-		
-			
 		</select><br><br>
 		
-
 		<input type="submit" value="Pesquisar Contas">		
 	</form>
-	
-
 </body>
 </html>

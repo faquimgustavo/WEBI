@@ -48,8 +48,6 @@ public class Operacao implements Servidor{
 			c.depositar(valor);
 			
 		}else if(produto.equals("transferencia")) {
-			
-			
 			if (c.getSaldo() >= valor) {
 				
 				int numConta2 = Integer.parseInt(req.getParameter("idconta2"));
