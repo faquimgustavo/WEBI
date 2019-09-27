@@ -42,30 +42,37 @@ public class GeraRelatorio implements Servidor {
 		List<Conta> lista = new ContaDAO().pesquisarConta(idcliente);
 		List<Seguro> seguro = new SeguroDAO().pesquisarSeguro(idcliente);
 		
+		Relatorio rl = new Relatorio();
+		double imposto = 0;
 		
 		for(Conta c : lista) {
-			if (c instanceof ContaCorrente) {cliente.addCCorrente(c.getNumero());}
-			else if(c instanceof ContaPoupanca) {cliente.addCPoupanca(c.getNumero());}
+			if (c instanceof ContaCorrente) {
+				cliente.addCCorrente(c.getNumero());
+				imposto += rl.calcularImposto(c);
+			}
+			else if(c instanceof ContaPoupanca) {
+				cliente.addCPoupanca(c.getNumero()); 
+			    imposto += rl.calcularImposto(c);
+			}
 		}
 		for(Seguro s: seguro) {
 			cliente.addSeguro(s.getNumero(), s.getValor());
+			imposto += rl.calcularImposto(s);
 		}
 		
 		
-		Relatorio rl = new Relatorio();
-		Double imposto = rl.calcularImposto(cliente);
-		System.out.println(cliente.getProdutos());
-		System.out.println(imposto);
+		
+		//Relatorio rl = new Relatorio();
+		//Double imposto = rl.calcularImposto(cliente);
+		
+		System.out.println("Imposto : " + imposto);
 		
 		
 		req.setAttribute("lista", lista);
 		req.setAttribute("cliente", cliente);
-		req.setAttribute("imposto", rl);
+		req.setAttribute("imposto", imposto);
 		req.setAttribute("seguro", seguro);
 
-
-		
-		
 		return "relatorio.jsp";
 	}
 

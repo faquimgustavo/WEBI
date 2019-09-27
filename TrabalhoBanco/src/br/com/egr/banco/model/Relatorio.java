@@ -6,8 +6,7 @@ public class Relatorio {
 		double impostos = 0;
 		for (Produto p : c.getProdutos()) {
 			impostos += p.valorImposto(); 
-			System.out.println("OIOIOIOIOIO");
-			System.out.println("\n  Chegou aqui, valor do imposto: " + impostos);
+			System.out.println("Valor Imposto, relatorio: " +p.valorImposto());
 		}
 		return impostos;
 	}

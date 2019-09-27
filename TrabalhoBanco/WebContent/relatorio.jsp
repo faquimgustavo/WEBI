@@ -22,6 +22,8 @@
 	<h3>Relatório</h3><br><br>
 	<%
 		String tipoCliente = request.getAttribute("cliente").getClass().getSimpleName();
+		double imposto = (Double)request.getAttribute("imposto");
+		
 		
 		String classeNome = "br.com.egr.banco.model." + tipoCliente;
 		Class<?> produto = Class.forName(classeNome);
@@ -30,7 +32,7 @@
 		c = (Cliente) request.getAttribute("cliente");
 		
 		Relatorio rl = new Relatorio();
-		Double imposto = rl.calcularImposto(c);
+		//Double imposto = rl.calcularImposto(p);
 	
 		out.println("<p> Cliente: " + c.getNome()+ "</p>");
 		
