@@ -58,8 +58,6 @@ public class GeraRelatorio implements Servidor {
 		System.out.println(imposto);
 		
 		
-		
-		
 		req.setAttribute("lista", lista);
 		req.setAttribute("cliente", cliente);
 		req.setAttribute("imposto", rl);
