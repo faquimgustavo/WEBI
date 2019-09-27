@@ -13,6 +13,8 @@ import br.com.egr.banco.dao.PessoaJuridicaDAO;
 import br.com.egr.banco.dao.SeguroDAO;
 import br.com.egr.banco.model.Cliente;
 import br.com.egr.banco.model.Conta;
+import br.com.egr.banco.model.ContaCorrente;
+import br.com.egr.banco.model.ContaPoupanca;
 import br.com.egr.banco.model.Produto;
 import br.com.egr.banco.model.Relatorio;
 import br.com.egr.banco.model.Seguro;
@@ -41,8 +43,21 @@ public class GeraRelatorio implements Servidor {
 		List<Seguro> seguro = new SeguroDAO().pesquisarSeguro(idcliente);
 		
 		
+		for(Conta c : lista) {
+			if (c instanceof ContaCorrente) {cliente.addCCorrente(c.getNumero());}
+			else if(c instanceof ContaPoupanca) {cliente.addCPoupanca(c.getNumero());}
+		}
+		for(Seguro s: seguro) {
+			cliente.addSeguro(s.getNumero(), s.getValor());
+		}
+		
+		
 		Relatorio rl = new Relatorio();
-		rl.calcularImposto(cliente);
+		Double imposto = rl.calcularImposto(cliente);
+		System.out.println(cliente.getProdutos());
+		System.out.println(imposto);
+		
+		
 		
 		
 		req.setAttribute("lista", lista);
