@@ -6,7 +6,6 @@ public abstract class Conta implements Produto {
 	private int numero;
 	private double saldo;
 	private boolean situacao;
-
 	
 	public Conta() {
 		

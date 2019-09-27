@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.egr.banco.dao.ContaDAO;
 import br.com.egr.banco.dao.PessoaFisicaDAO;
 import br.com.egr.banco.dao.PessoaJuridicaDAO;
+import br.com.egr.banco.dao.SeguroDAO;
 import br.com.egr.banco.model.Cliente;
 import br.com.egr.banco.model.Conta;
+import br.com.egr.banco.model.Produto;
 import br.com.egr.banco.model.Relatorio;
+import br.com.egr.banco.model.Seguro;
 
 public class GeraRelatorio implements Servidor {
 
@@ -35,13 +38,18 @@ public class GeraRelatorio implements Servidor {
 		}
 		
 		List<Conta> lista = new ContaDAO().pesquisarConta(idcliente);
+		List<Seguro> seguro = new SeguroDAO().pesquisarSeguro(idcliente);
+		
 		
 		Relatorio rl = new Relatorio();
-		Double imposto = rl.calcularImposto(cliente);
+		rl.calcularImposto(cliente);
+		
 		
 		req.setAttribute("lista", lista);
 		req.setAttribute("cliente", cliente);
-		req.setAttribute("imposto", imposto);
+		req.setAttribute("imposto", rl);
+		req.setAttribute("seguro", seguro);
+
 
 		
 		

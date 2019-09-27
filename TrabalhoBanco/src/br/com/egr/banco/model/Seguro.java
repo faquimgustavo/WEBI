@@ -4,11 +4,11 @@ public class Seguro implements Produto {
 	private int numero;
 	private double valor;
 	private boolean situacao;
-
+	
+	
 	public Seguro() {
 		
 	}
-	
 	public Seguro(int numero, double valor) {
 		this.setNumero(numero);
 		this.valor = valor;
@@ -23,11 +23,6 @@ public class Seguro implements Produto {
 	public double getValor() {
 		return valor;
 	}
-
-	/*@Override
-	public String getTipo() {
-		return "seguro";
-	}*/
 
 	public int getNumero() {
 		return numero;
