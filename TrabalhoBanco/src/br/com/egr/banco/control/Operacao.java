@@ -60,6 +60,7 @@ public class Operacao implements Servidor{
 				System.out.println(c2.getSaldo());
 			}	
 			
+			
 		}
 		
 		contaDAO.atualizar(c);

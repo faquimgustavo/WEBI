@@ -32,8 +32,7 @@
 		c = (Cliente) request.getAttribute("cliente");
 		
 		Relatorio rl = new Relatorio();
-		//Double imposto = rl.calcularImposto(p);
-	
+		
 		out.println("<p> Cliente: " + c.getNome()+ "</p>");
 		
 	%>
